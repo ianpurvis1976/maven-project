@@ -11,7 +11,7 @@ pipeline {
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
                 timeout(time:5, unit:'DAYS'){
                     input message: 'Approve Production Deployment?'
                 }
-                build job: 'Deploy-to-prod'
+                build job: 'Deploy-to-production'
             }
         
             post {
