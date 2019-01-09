@@ -3,7 +3,10 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                bat 'C:\apache-maven-3.6.0\bin\mvn clean package'
+                bat 'wmic computersystem get name'
+                bat 'echo %PATH%'
+                echo bat(returnStdout: true, script: 'set')
+                bat 'mvn clean package'
             }
             post {
                 success {
