@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "pscp -i C:/Users/PURVISIS/Downloads/tomcat2.ppk **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
+                        bat "pscp -i C:/Users/PURVISIS/Downloads/tomcat2.ppk webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
                     }
                 }
-
+ 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "pscp -i C:/Users/PURVISIS/Downloads/tomcat2.ppk **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+                        bat "pscp -i C:/Users/PURVISIS/Downloads/tomcat2.ppk webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
                     }
                 }
             }
